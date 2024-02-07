@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using Game.Mongodb;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -79,7 +80,7 @@ namespace Game.Pages
 
                 var updateArmor = Builders<Character>.Update.Set("Armor", Convert.ToInt32(ArmorTb.Text));
                 var updateMDamage = Builders<Character>.Update.Set("MDamage", Convert.ToInt32(MDamageTb.Text));
-                var updateMDefense = Builders<Character>.Update.Set("MDefence", Convert.ToInt32(MDefenceTb.Text));
+                var updateMDefense = Builders<Character>.Update.Set("MDefence", Convert.ToDouble(MDefenceTb.Text));
                 var updateCRTChanse = Builders<Character>.Update.Set("CrtChanse", Convert.ToInt32(CRTChanseTb.Text));
                 var updateCRTDamage = Builders<Character>.Update.Set("CrtDamage", Convert.ToInt32(CRTDamageTb.Text));
 
@@ -132,6 +133,43 @@ namespace Game.Pages
             App.character.MDefence = Convert.ToInt32(MDefenceTb.Text);
             App.character.CrtChanse = Convert.ToInt32(CRTChanseTb.Text);
             App.character.CrtDamage = Convert.ToInt32(CRTDamageTb.Text);
+        }
+
+        private void PlusStrenghbtn_Click(object sender, RoutedEventArgs e)
+        {
+            int maxStrenght = Convert.ToInt32(App.character.Strenght);
+            int i = 0;
+            if (i <= 5)
+            {
+                while (maxStrenght <= 24)
+                {
+                    StrengthTb.Text = Convert.ToString(App.character.Strenght + 1);
+                    maxStrenght += 1;
+                }
+            }
+            else
+            {
+                Console.WriteLine("You can't do this");
+            }
+           
+        }
+
+        private void MinusStrenghbtn_Click(object sender, RoutedEventArgs e)
+        {
+            int minStrenght = Convert.ToInt32(App.character.Strenght);
+            int i = 0;
+            if (i <= 5)
+            {
+                while (minStrenght > 0)
+                {
+                    StrengthTb.Text = Convert.ToString(App.character.Strenght - 1);
+                    minStrenght -= 1;
+                }
+            }
+            else
+            {
+                Console.WriteLine("You can't do this");
+            }
         }
     }
 }
