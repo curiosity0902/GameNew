@@ -1,0 +1,128 @@
+﻿<Page x:Class="Game.Pages.CharacterPageWizard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Game.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="CharacterPageWizard">
+
+    <Grid>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Source="\Image\picter.jpg"
+             Height="1080"
+             Width="1920"
+             Grid.Column="0"
+             Grid.Row="0"
+             Grid.RowSpan="5"
+             Grid.ColumnSpan="5"/>
+
+        <TextBlock Text="Enter Character Name:" 
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   FontSize="46"
+                   Grid.ColumnSpan="2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"/>
+
+        <TextBox x:Name="txtName"
+                 Width="450"
+                 Height="90"
+                 FontSize="46"
+                 VerticalAlignment="Center"
+                 Grid.Row="0"
+                 Grid.Column="2"
+                 Grid.ColumnSpan="2"/>
+
+        <TextBlock Text="Enter Character Attributes:" 
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3"
+                    FontSize="56"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+
+        <TextBlock Text="Strength:" 
+            Grid.Column="0"
+            Grid.Row="2"
+            FontSize="46"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+
+        <TextBox x:Name="StrengthTb" 
+                     Grid.Row="2"
+                     Grid.Column="1" 
+                     FontSize="46"
+                     Width="350"
+                     Height="90" Text="15"/>
+
+        <TextBlock Text="Intelegence:" 
+           Grid.Column="0"
+           Grid.Row="3"
+           FontSize="46"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Center"/>
+
+        <TextBox x:Name="IntelegenceTb"
+                     Grid.Row="2"
+                     FontSize="46"
+                     Grid.Column="3" 
+                     Width="350"
+                     Height="90" Text="20"
+                     />
+
+        <TextBlock Text="Dexterity:" 
+           Grid.Column="2"
+           Grid.Row="2"
+           FontSize="46"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Center"/>
+
+        <TextBox x:Name="DexterityTb"  
+                     Grid.Row="3"
+                     Grid.Column="1"
+                     FontSize="46"
+                     Width="350"
+                     Height="90" Text="35"/>
+
+        <TextBlock Text="Vitality:" 
+       Grid.Column="2"
+       Grid.Row="3"
+       FontSize="46"
+       HorizontalAlignment="Center"
+       VerticalAlignment="Center"/>
+
+        <TextBox x:Name="VitalityTb"   
+                     Grid.Row="3"
+                     Grid.Column="3" 
+                     FontSize="46"
+                     Width="350"
+                     Height="90" Text="15"/>
+
+        <Button Name="btnCreate" Click="btnCreate_Click" 
+                Grid.Row="4"
+                Grid.Column="3"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Left"
+                Width="350"
+                Height="90"
+                FontSize="32"
+                FontFamily="Bord"
+                Content="Create Character"/>
+    </Grid>
+</Page>
