@@ -100,6 +100,7 @@ namespace Game.Pages
                 collection.UpdateOneAsync(filtersCRTChanse, updateCRTChanse);
                 collection.UpdateOneAsync(filtersCRTDamage, updateCRTDamage);
 
+
                 Refresh();
         
                 MessageBox.Show("ok");
