@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,7 @@ namespace Game.Pages
             MDefenceTb.Text = Convert.ToString(App.character.Intelegence * 0.5);
             CRTChanseTb.Text = Convert.ToString(App.character.Dexterity * 0.2);
             CRTDamageTb.Text = Convert.ToString(App.character.Dexterity);
+            PointsTb.Text = Convert.ToString(App.character.Point);
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
@@ -66,6 +68,7 @@ namespace Game.Pages
                 var filtersMDefense = Builders<Character>.Filter.Eq("MDefence", App.character.MDefence);
                 var filtersCRTChanse = Builders<Character>.Filter.Eq("CrtChanse", App.character.CrtChanse);
                 var filtersCRTDamage = Builders<Character>.Filter.Eq("CrtDamage", App.character.CrtDamage);
+                var filtersPoint = Builders<Character>.Filter.Eq("Point", App.character.Point);
 
                 // параметр обновления
                 var update = Builders<Character>.Update.Set("Name", txtName.Text);
@@ -83,6 +86,7 @@ namespace Game.Pages
                 var updateMDefense = Builders<Character>.Update.Set("MDefence", Convert.ToDouble(MDefenceTb.Text));
                 var updateCRTChanse = Builders<Character>.Update.Set("CrtChanse", Convert.ToInt32(CRTChanseTb.Text));
                 var updateCRTDamage = Builders<Character>.Update.Set("CrtDamage", Convert.ToInt32(CRTDamageTb.Text));
+                var updatePoint = Builders<Character>.Update.Set("Point", Convert.ToInt32(PointsTb.Text));
 
                 var result = collection.UpdateOneAsync(filterName, update);
                 collection.UpdateOneAsync(filtersStrenght, updateStrenght);
@@ -100,6 +104,7 @@ namespace Game.Pages
                 collection.UpdateOneAsync(filtersMDefense, updateMDefense);
                 collection.UpdateOneAsync(filtersCRTChanse, updateCRTChanse);
                 collection.UpdateOneAsync(filtersCRTDamage, updateCRTDamage);
+                collection.UpdateOneAsync(filtersPoint, updatePoint);
 
 
                 Refresh();
@@ -133,43 +138,204 @@ namespace Game.Pages
             App.character.MDefence = Convert.ToInt32(MDefenceTb.Text);
             App.character.CrtChanse = Convert.ToInt32(CRTChanseTb.Text);
             App.character.CrtDamage = Convert.ToInt32(CRTDamageTb.Text);
+            App.character.Point = Convert.ToInt32(PointsTb.Text);
         }
+        public void ObnovBD()
+        {
+            if (txtName.Text != "")
+            {
+                var client = new MongoClient("mongodb://localhost");
+                var database = client.GetDatabase("Characters");
+                var collection = database.GetCollection<Character>("CharacterCollection");
 
+                var filterName = Builders<Character>.Filter.Eq("Name", App.character.Name);
+                var filtersStrenght = Builders<Character>.Filter.Eq("Strenght", App.character.Strenght);
+                var filtersIntelegence = Builders<Character>.Filter.Eq("Intelegence", App.character.Intelegence);
+                var filtersDexterity = Builders<Character>.Filter.Eq("Dexterity", App.character.Dexterity);
+                var filtersVitality = Builders<Character>.Filter.Eq("Vitality", App.character.Vitality);
+                var filtersHealth = Builders<Character>.Filter.Eq("Heath", App.character.Heath);
+                var filtersManna = Builders<Character>.Filter.Eq("Manna", App.character.Manna);
+                var filtersPDamage = Builders<Character>.Filter.Eq("PDamage", App.character.PDamage);
+                var filtersArmor = Builders<Character>.Filter.Eq("Armor", App.character.Armor);
+                var filtersMDamage = Builders<Character>.Filter.Eq("MDamage", App.character.MDamage);
+                var filtersMDefense = Builders<Character>.Filter.Eq("MDefence", App.character.MDefence);
+                var filtersCRTChanse = Builders<Character>.Filter.Eq("CrtChanse", App.character.CrtChanse);
+                var filtersCRTDamage = Builders<Character>.Filter.Eq("CrtDamage", App.character.CrtDamage);
+                var filtersPoint = Builders<Character>.Filter.Eq("Point", App.character.Point);
+
+                // параметр обновления
+                var update = Builders<Character>.Update.Set("Name", txtName.Text);
+                var updateStrenght = Builders<Character>.Update.Set("Strenght", Convert.ToInt32(StrengthTb.Text));
+                var updateIntelegence = Builders<Character>.Update.Set("Intelegence", Convert.ToInt32(IntelegenceTb.Text));
+                var updateDexterity = Builders<Character>.Update.Set("Dexterity", Convert.ToInt32(DexterityTb.Text));
+                var updateVitality = Builders<Character>.Update.Set("Vitality", Convert.ToInt32(VitalityTb.Text));
+                var updateHealth = Builders<Character>.Update.Set("Heath", Convert.ToInt32(HealthTB.Text));
+                var updateManna = Builders<Character>.Update.Set("Manna", Convert.ToInt32(MannaTB.Text));
+
+                var updatePDamage = Builders<Character>.Update.Set("PDamage", Convert.ToInt32(PDamageTb.Text));
+
+                var updateArmor = Builders<Character>.Update.Set("Armor", Convert.ToInt32(ArmorTb.Text));
+                var updateMDamage = Builders<Character>.Update.Set("MDamage", Convert.ToInt32(MDamageTb.Text));
+                var updateMDefense = Builders<Character>.Update.Set("MDefence", Convert.ToDouble(MDefenceTb.Text));
+                var updateCRTChanse = Builders<Character>.Update.Set("CrtChanse", Convert.ToInt32(CRTChanseTb.Text));
+                var updateCRTDamage = Builders<Character>.Update.Set("CrtDamage", Convert.ToInt32(CRTDamageTb.Text));
+                var updatePoint = Builders<Character>.Update.Set("Point", Convert.ToInt32(PointsTb.Text));
+
+                var result = collection.UpdateOneAsync(filterName, update);
+                collection.UpdateOneAsync(filtersStrenght, updateStrenght);
+                collection.UpdateOneAsync(filtersIntelegence, updateIntelegence);
+                collection.UpdateOneAsync(filtersDexterity, updateDexterity);
+                collection.UpdateOneAsync(filtersVitality, updateVitality);
+
+                collection.UpdateOneAsync(filtersHealth, updateHealth);
+                collection.UpdateOneAsync(filtersManna, updateManna);
+
+                collection.UpdateOneAsync(filtersPDamage, updatePDamage);
+
+                collection.UpdateOneAsync(filtersArmor, updateArmor);
+                collection.UpdateOneAsync(filtersMDamage, updateMDamage);
+                collection.UpdateOneAsync(filtersMDefense, updateMDefense);
+                collection.UpdateOneAsync(filtersCRTChanse, updateCRTChanse);
+                collection.UpdateOneAsync(filtersCRTDamage, updateCRTDamage);
+                collection.UpdateOneAsync(filtersPoint, updatePoint);
+            }
+        }
         private void PlusStrenghbtn_Click(object sender, RoutedEventArgs e)
         {
-            int maxStrenght = Convert.ToInt32(App.character.Strenght);
-            int i = 0;
-            if (i <= 5)
+            //int maxStrenght = Convert.ToInt32(App.character.MaxStrength);
+
+            int point = Convert.ToInt32(App.character.Point);
+            int minStrenght = Convert.ToInt32(App.character.Strenght);
+            int maxStrenght = Convert.ToInt32(App.character.MaxStrength);
+            if (minStrenght < maxStrenght)
             {
-                while (maxStrenght <= 24)
+                StrengthTb.Text = Convert.ToString(App.character.Strenght + 1);
+                PointsTb.Text = Convert.ToString(App.character.Point - 1);
+                minStrenght += 1;
+                point -= 1;
+
+                MessageBox.Show("Характеристика обновлена");
+                ObnovBD();
+                Refresh();
+                if (point == 0)
                 {
-                    StrengthTb.Text = Convert.ToString(App.character.Strenght + 1);
-                    maxStrenght += 1;
+                    Console.WriteLine("Stop");
                 }
+
             }
-            else
-            {
-                Console.WriteLine("You can't do this");
-            }
-           
         }
 
         private void MinusStrenghbtn_Click(object sender, RoutedEventArgs e)
         {
-            int minStrenght = Convert.ToInt32(App.character.Strenght);
-            int i = 0;
-            if (i <= 5)
+            int strenght = Convert.ToInt32(App.character.Strenght);
+
+            if (strenght > 1)
             {
-                while (minStrenght > 0)
-                {
-                    StrengthTb.Text = Convert.ToString(App.character.Strenght - 1);
-                    minStrenght -= 1;
-                }
+                StrengthTb.Text = Convert.ToString(App.character.Strenght - 1);
+                strenght -= 1;
+
+                MessageBox.Show("Характеристика обновлена");
+                ObnovBD();
+                Refresh();
             }
             else
+                MessageBox.Show("НЕ МОЖЕТ БЫТЬ 0");
+        }
+
+        private void PlusDexteritybtn_Click(object sender, RoutedEventArgs e)
+        {
+            int minDexterity = Convert.ToInt32(App.character.Dexterity);
+            int maxDexterity = Convert.ToInt32(App.character.Dexterity);
+            if (minDexterity < maxDexterity)
             {
-                Console.WriteLine("You can't do this");
+                DexterityTb.Text = Convert.ToString(App.character.Dexterity + 1);
+                minDexterity += 1;
+
+                MessageBox.Show("Характеристика обновлена");
+                ObnovBD();
+                Refresh();
             }
+        }
+
+        private void MinusDexteritybtn_Click(object sender, RoutedEventArgs e)
+        {
+            int dexterity = Convert.ToInt32(App.character.Dexterity);
+
+            if (dexterity > 1)
+            {
+                DexterityTb.Text = Convert.ToString(App.character.Dexterity - 1);
+                dexterity -= 1;
+
+                MessageBox.Show("Характеристика обновлена");
+                ObnovBD();
+                Refresh();
+            }
+            else
+                MessageBox.Show("НЕ МОЖЕТ БЫТЬ 0");
+        }
+
+        private void PlusIntelegencebtn_Click(object sender, RoutedEventArgs e)
+        {
+            int minIntelegence = Convert.ToInt32(App.character.Intelegence);
+            int maxIntelegence = Convert.ToInt32(App.character.Intelegence);
+            if (minIntelegence < maxIntelegence)
+            {
+                IntelegenceTb.Text = Convert.ToString(App.character.Intelegence + 1);
+                minIntelegence += 1;
+
+                MessageBox.Show("Характеристика обновлена");
+                ObnovBD();
+                Refresh();
+            }
+        }
+
+        private void MinusIntelegencebtn_Click(object sender, RoutedEventArgs e)
+        {
+            int intelegence = Convert.ToInt32(App.character.Intelegence);
+
+            if (intelegence > 1)
+            {
+                IntelegenceTb.Text = Convert.ToString(App.character.Intelegence - 1);
+                intelegence -= 1;
+
+                MessageBox.Show("Характеристика обновлена");
+                ObnovBD();
+                Refresh();
+            }
+            else
+                MessageBox.Show("НЕ МОЖЕТ БЫТЬ 0");
+        }
+
+        private void PlusVitalitybtn_Click(object sender, RoutedEventArgs e)
+        {
+            int minVitality = Convert.ToInt32(App.character.Vitality);
+            int maxVitality = Convert.ToInt32(App.character.Vitality);
+            if (minVitality < maxVitality)
+            {
+                VitalityTb.Text = Convert.ToString(App.character.Vitality + 1);
+                minVitality += 1;
+
+                MessageBox.Show("Характеристика обновлена");
+                ObnovBD();
+                Refresh();
+            }
+        }
+
+        private void MinusVitalitybtn_Click(object sender, RoutedEventArgs e)
+        {
+            int vitality = Convert.ToInt32(App.character.Vitality);
+
+            if (vitality > 1)
+            {
+                VitalityTb.Text = Convert.ToString(App.character.Vitality - 1);
+                vitality -= 1;
+
+                MessageBox.Show("Характеристика обновлена");
+                ObnovBD();
+                Refresh();
+            }
+            else
+                MessageBox.Show("НЕ МОЖЕТ БЫТЬ 0");
         }
     }
 }

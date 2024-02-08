@@ -37,7 +37,7 @@
              Grid.ColumnSpan="7"/>
 
         <TextBlock Text="Enter Character Name:" 
-                   Grid.Column="1"
+                   Grid.Column="0"
                    Grid.Row="0"
                    FontSize="46"
                    Grid.ColumnSpan="2"
@@ -50,8 +50,27 @@
                  FontSize="46"
                  VerticalAlignment="Center"
                  Grid.Row="0"
-                 Grid.Column="3"
+                 Grid.Column="2"
                  Grid.ColumnSpan="2"/>
+        
+        <TextBlock Text="Points:" 
+            Grid.Column="4"
+            Grid.Row="0"
+            FontSize="46"
+            Grid.ColumnSpan="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"/>
+
+        <TextBlock x:Name="PointsTb"
+          Width="150"
+          Height="90"
+          FontSize="46"
+          HorizontalAlignment="Right"
+          VerticalAlignment="Center"
+          Grid.Row="0"
+          Grid.Column="4"
+          Grid.ColumnSpan="1"/>
+
 
         <TextBlock Text="Strength:" 
             Grid.Column="0"
@@ -74,7 +93,7 @@
            HorizontalAlignment="Center"
            VerticalAlignment="Center"/>
 
-        <TextBox x:Name="IntelegenceTb"
+        <TextBlock x:Name="IntelegenceTb"
                      Grid.Row="2"
                      FontSize="46"
                      Grid.Column="1" 
@@ -89,7 +108,7 @@
            HorizontalAlignment="Center"
            VerticalAlignment="Center"/>
 
-        <TextBox x:Name="DexterityTb"  
+        <TextBlock x:Name="DexterityTb"  
                      Grid.Row="1"
                      Grid.Column="3"
                      FontSize="46"
@@ -103,7 +122,7 @@
        HorizontalAlignment="Center"
        VerticalAlignment="Center"/>
 
-        <TextBox x:Name="VitalityTb"   
+        <TextBlock x:Name="VitalityTb"   
                      Grid.Row="2"
                      Grid.Column="3" 
                      FontSize="46"
@@ -259,7 +278,7 @@
          Height="50"
          FontSize="42"
          FontFamily="Bord"
-         Content="+"/>
+         Content="+" Click="PlusIntelegencebtn_Click"/>
 
         <Button Name="MinusIntelegencebtn"
         Grid.Row="2"
@@ -271,7 +290,7 @@
         Height="50"
         FontSize="42"
         FontFamily="Bord"
-        Content="-"/>
+        Content="-" Click="MinusIntelegencebtn_Click"/>
 
 
         <Button Name="PlusDexteritybtn"
@@ -284,7 +303,7 @@
           Height="50"
           FontSize="42"
           FontFamily="Bord"
-          Content="+"/>
+          Content="+" Click="PlusDexteritybtn_Click"/>
 
         <Button Name="MinusDexteritybtn" 
    Grid.Row="1"
@@ -296,7 +315,7 @@
    Height="50"
    FontSize="42"
    FontFamily="Bord"
-   Content="-"/>
+   Content="-" Click="MinusDexteritybtn_Click"/>
 
         <Button Name="PlusVitalitybtn"
           Grid.Row="2"
@@ -308,7 +327,7 @@
           Height="50"
           FontSize="42"
           FontFamily="Bord"
-          Content="+"/>
+          Content="+" Click="PlusVitalitybtn_Click"/>
 
         <Button Name="MinusVitalitybtn" 
             Grid.Row="2"
@@ -320,7 +339,7 @@
             Height="50"
             FontSize="42"
             FontFamily="Bord"
-            Content="-"/>
+            Content="-" Click="MinusVitalitybtn_Click"/>
 
         <Button Name="btnCreate" Click="btnCreate_Click" 
                 Grid.Row="6"

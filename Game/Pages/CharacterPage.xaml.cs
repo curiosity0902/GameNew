@@ -36,7 +36,7 @@ namespace Game.Pages
             int dexterity = Convert.ToInt32(DexterityTb.Text);
             int vitality = Convert.ToInt32(VitalityTb.Text);
 
-            CRUD.CreateCharacterWarrior(new Character(name, strength, 250, dexterity, 80, intelegence, 50, vitality, 100, 0, 0, 0, 0, 0, 0, 0, 0));
+            CRUD.CreateCharacterWarrior(new Character(name, strength, 25, dexterity, 80, intelegence, 50, vitality, 100, 0, 0, 0, 0, 0, 0, 0, 0, 5));
 
             var client = new MongoClient("mongodb://localhost");
             var database = client.GetDatabase("Characters");
