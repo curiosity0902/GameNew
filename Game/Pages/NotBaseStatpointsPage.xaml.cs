@@ -207,7 +207,7 @@ namespace Game.Pages
             int point = Convert.ToInt32(App.character.Point);
             int minStrenght = Convert.ToInt32(App.character.Strenght);
             int maxStrenght = Convert.ToInt32(App.character.MaxStrength);
-            if (minStrenght < maxStrenght)
+            if (minStrenght < maxStrenght && point >= 1)
             {
                 StrengthTb.Text = Convert.ToString(App.character.Strenght + 1);
                 PointsTb.Text = Convert.ToString(App.character.Point - 1);
@@ -217,22 +217,24 @@ namespace Game.Pages
                 MessageBox.Show("Характеристика обновлена");
                 ObnovBD();
                 Refresh();
-                if (point == 0)
-                {
-                    Console.WriteLine("Stop");
-                }
-
+            }
+            else
+            {
+                MessageBox.Show("Stop");
             }
         }
 
         private void MinusStrenghbtn_Click(object sender, RoutedEventArgs e)
         {
+            int point = Convert.ToInt32(App.character.Point);
             int strenght = Convert.ToInt32(App.character.Strenght);
 
-            if (strenght > 1)
+            if (strenght >= 1)
             {
                 StrengthTb.Text = Convert.ToString(App.character.Strenght - 1);
+                PointsTb.Text = Convert.ToString(App.character.Point + 1);
                 strenght -= 1;
+                point += 1;
 
                 MessageBox.Show("Характеристика обновлена");
                 ObnovBD();
@@ -244,27 +246,38 @@ namespace Game.Pages
 
         private void PlusDexteritybtn_Click(object sender, RoutedEventArgs e)
         {
+            int point = Convert.ToInt32(App.character.Point);
             int minDexterity = Convert.ToInt32(App.character.Dexterity);
-            int maxDexterity = Convert.ToInt32(App.character.Dexterity);
-            if (minDexterity < maxDexterity)
+            int maxDexterity = Convert.ToInt32(App.character.MaxDexterity);
+            if (minDexterity < maxDexterity && point >= 1)
             {
                 DexterityTb.Text = Convert.ToString(App.character.Dexterity + 1);
+                PointsTb.Text = Convert.ToString(App.character.Point - 1);
                 minDexterity += 1;
+                point -= 1;
 
                 MessageBox.Show("Характеристика обновлена");
                 ObnovBD();
                 Refresh();
             }
+            else
+            {
+                MessageBox.Show("Stop");
+            }           
         }
 
         private void MinusDexteritybtn_Click(object sender, RoutedEventArgs e)
         {
+
+            int point = Convert.ToInt32(App.character.Point);
             int dexterity = Convert.ToInt32(App.character.Dexterity);
 
-            if (dexterity > 1)
+            if (dexterity >= 1)
             {
                 DexterityTb.Text = Convert.ToString(App.character.Dexterity - 1);
+                PointsTb.Text = Convert.ToString(App.character.Point + 1);
                 dexterity -= 1;
+                point += 1;
 
                 MessageBox.Show("Характеристика обновлена");
                 ObnovBD();
@@ -276,27 +289,37 @@ namespace Game.Pages
 
         private void PlusIntelegencebtn_Click(object sender, RoutedEventArgs e)
         {
+            int point = Convert.ToInt32(App.character.Point);
             int minIntelegence = Convert.ToInt32(App.character.Intelegence);
-            int maxIntelegence = Convert.ToInt32(App.character.Intelegence);
-            if (minIntelegence < maxIntelegence)
+            int maxIntelegence = Convert.ToInt32(App.character.MaxIntelegence);
+            if (minIntelegence < maxIntelegence && point >= 1)
             {
                 IntelegenceTb.Text = Convert.ToString(App.character.Intelegence + 1);
+                PointsTb.Text = Convert.ToString(App.character.Point - 1);
                 minIntelegence += 1;
+                point -= 1;
 
                 MessageBox.Show("Характеристика обновлена");
                 ObnovBD();
                 Refresh();
             }
+            else
+            {
+                MessageBox.Show("Stop");
+            }
         }
 
         private void MinusIntelegencebtn_Click(object sender, RoutedEventArgs e)
         {
+            int point = Convert.ToInt32(App.character.Point);
             int intelegence = Convert.ToInt32(App.character.Intelegence);
 
-            if (intelegence > 1)
+            if (intelegence >= 1)
             {
                 IntelegenceTb.Text = Convert.ToString(App.character.Intelegence - 1);
+                PointsTb.Text = Convert.ToString(App.character.Point + 1);
                 intelegence -= 1;
+                point += 1;
 
                 MessageBox.Show("Характеристика обновлена");
                 ObnovBD();
@@ -308,27 +331,37 @@ namespace Game.Pages
 
         private void PlusVitalitybtn_Click(object sender, RoutedEventArgs e)
         {
+            int point = Convert.ToInt32(App.character.Point);
             int minVitality = Convert.ToInt32(App.character.Vitality);
-            int maxVitality = Convert.ToInt32(App.character.Vitality);
-            if (minVitality < maxVitality)
+            int maxVitality = Convert.ToInt32(App.character.MaxVitality);
+            if (minVitality < maxVitality && point >= 1)
             {
                 VitalityTb.Text = Convert.ToString(App.character.Vitality + 1);
+                PointsTb.Text = Convert.ToString(App.character.Point - 1);
                 minVitality += 1;
+                point -= 1;
 
                 MessageBox.Show("Характеристика обновлена");
                 ObnovBD();
                 Refresh();
             }
+            else
+            {
+                MessageBox.Show("Stop");
+            }
         }
 
         private void MinusVitalitybtn_Click(object sender, RoutedEventArgs e)
         {
+            int point = Convert.ToInt32(App.character.Point);
             int vitality = Convert.ToInt32(App.character.Vitality);
 
-            if (vitality > 1)
+            if (vitality >= 1)
             {
                 VitalityTb.Text = Convert.ToString(App.character.Vitality - 1);
+                PointsTb.Text = Convert.ToString(App.character.Point + 1);
                 vitality -= 1;
+                point += 1;
 
                 MessageBox.Show("Характеристика обновлена");
                 ObnovBD();

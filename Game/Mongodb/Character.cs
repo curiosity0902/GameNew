@@ -43,7 +43,7 @@ namespace Game
         public double Manna { get; set; }
         public Character(string name, int strenght, int maxStrenght, int dexterity, int maxDexterity, 
             int intelegence, int maxIntelegence, int vitality, int maxVitality, double health, double manna, 
-            double pdamage, double armor, double mdamage, double mdefence, double crtchanse, double crtmdamage, int point)
+            double pdamage, double armor, double mdamage, double mdefence, double crtchanse, double crtmdamage, int point, int level)
         {
             Name = name;
             Strenght = strenght;
@@ -63,6 +63,7 @@ namespace Game
             CrtChanse = crtchanse;
             CrtDamage = crtmdamage;
             Point = point;
+            Level = level;
         }
         public void GetAttributsWarrrior()
         {

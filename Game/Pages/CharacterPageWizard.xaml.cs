@@ -33,7 +33,7 @@ namespace Game.Pages
             int intelegence = Convert.ToInt32(IntelegenceTb.Text);
             int dexterity = Convert.ToInt32(DexterityTb.Text);
             int vitality = Convert.ToInt32(VitalityTb.Text);
-            CRUD.CreateCharacterWizard(new Character(name, strength, 45, dexterity, 80, intelegence, 250, vitality, 70, 0, 0, 0, 0, 0, 0, 0, 0, 10));
+            CRUD.CreateCharacterWizard(new Character(name, strength, 45, dexterity, 80, intelegence, 250, vitality, 70, 0, 0, 0, 0, 0, 0, 0, 0, 10, 1));
             NavigationService.Navigate(new Characters());
         }
     }

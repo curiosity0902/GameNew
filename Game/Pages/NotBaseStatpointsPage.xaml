@@ -71,6 +71,24 @@
           Grid.Column="4"
           Grid.ColumnSpan="1"/>
 
+        <TextBlock Text="Level:" 
+       Grid.Column="5"
+       Grid.Row="0"
+       FontSize="46"
+       Grid.ColumnSpan="1"
+       HorizontalAlignment="Left"
+       VerticalAlignment="Center"/>
+
+        <TextBlock x:Name="LevelTb"
+     Width="150"
+     Height="90"
+     FontSize="46"
+     HorizontalAlignment="Center"
+     VerticalAlignment="Center"
+     Grid.Row="0"
+     Grid.Column="6"
+     Grid.ColumnSpan="1"/>
+
 
         <TextBlock Text="Strength:" 
             Grid.Column="0"
