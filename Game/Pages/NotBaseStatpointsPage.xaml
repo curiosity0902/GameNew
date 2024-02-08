@@ -359,6 +359,17 @@
             FontFamily="Bord"
             Content="-" Click="MinusVitalitybtn_Click"/>
 
+        <Button Name="Levelbtn" Click="Levelbtn_Click" 
+             Grid.Row="1"
+             Grid.Column="6"
+             Grid.ColumnSpan="1"
+             HorizontalAlignment="Left"
+             Width="150"
+             Height="90"
+             FontSize="32"
+             FontFamily="Bord"
+             Content="Level"/>
+        
         <Button Name="btnCreate" Click="btnCreate_Click" 
                 Grid.Row="6"
                 Grid.Column="5"

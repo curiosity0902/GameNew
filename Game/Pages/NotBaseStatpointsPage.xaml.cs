@@ -45,6 +45,7 @@ namespace Game.Pages
             CRTChanseTb.Text = Convert.ToString(App.character.Dexterity * 0.2);
             CRTDamageTb.Text = Convert.ToString(App.character.Dexterity);
             PointsTb.Text = Convert.ToString(App.character.Point);
+            LevelTb.Text = Convert.ToString(App.character.Level);
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
@@ -69,6 +70,7 @@ namespace Game.Pages
                 var filtersCRTChanse = Builders<Character>.Filter.Eq("CrtChanse", App.character.CrtChanse);
                 var filtersCRTDamage = Builders<Character>.Filter.Eq("CrtDamage", App.character.CrtDamage);
                 var filtersPoint = Builders<Character>.Filter.Eq("Point", App.character.Point);
+                var filtersLevel = Builders<Character>.Filter.Eq("Level", App.character.Level);
 
                 // параметр обновления
                 var update = Builders<Character>.Update.Set("Name", txtName.Text);
@@ -87,6 +89,7 @@ namespace Game.Pages
                 var updateCRTChanse = Builders<Character>.Update.Set("CrtChanse", Convert.ToInt32(CRTChanseTb.Text));
                 var updateCRTDamage = Builders<Character>.Update.Set("CrtDamage", Convert.ToInt32(CRTDamageTb.Text));
                 var updatePoint = Builders<Character>.Update.Set("Point", Convert.ToInt32(PointsTb.Text));
+                var updateLevel = Builders<Character>.Update.Set("Level", Convert.ToInt32(LevelTb.Text));
 
                 var result = collection.UpdateOneAsync(filterName, update);
                 collection.UpdateOneAsync(filtersStrenght, updateStrenght);
@@ -105,6 +108,7 @@ namespace Game.Pages
                 collection.UpdateOneAsync(filtersCRTChanse, updateCRTChanse);
                 collection.UpdateOneAsync(filtersCRTDamage, updateCRTDamage);
                 collection.UpdateOneAsync(filtersPoint, updatePoint);
+                collection.UpdateOneAsync(filtersLevel, updateLevel);
 
 
                 Refresh();
@@ -139,6 +143,7 @@ namespace Game.Pages
             App.character.CrtChanse = Convert.ToInt32(CRTChanseTb.Text);
             App.character.CrtDamage = Convert.ToInt32(CRTDamageTb.Text);
             App.character.Point = Convert.ToInt32(PointsTb.Text);
+            App.character.Level = Convert.ToInt32(LevelTb.Text);
         }
         public void ObnovBD()
         {
@@ -369,6 +374,30 @@ namespace Game.Pages
             }
             else
                 MessageBox.Show("НЕ МОЖЕТ БЫТЬ 0");
+        }
+
+        private void Levelbtn_Click(object sender, RoutedEventArgs e)
+        {
+            int point = Convert.ToInt32(App.character.Point);
+            int level = Convert.ToInt32(App.character.Level);
+
+            int maxLevel = 99;
+
+            if (point >= 1000)
+            {
+                for (int i = 1; i < maxLevel; i++)
+                {
+                    LevelTb.Text = Convert.ToString(App.character.Level + 1);
+                    PointsTb.Text = Convert.ToString(App.character.Point + 1000);
+                    level += 1;
+                    point += 1000;
+
+                    MessageBox.Show("Update");
+                }
+            }
+            else
+                MessageBox.Show("Stop");
+
         }
     }
 }
