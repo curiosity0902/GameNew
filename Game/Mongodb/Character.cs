@@ -11,6 +11,7 @@ namespace Game
     public class Character
     {
         public string Name { get; set; }
+        public string ClassName { get; set; }
         public int MaxVitality { get; set; }
         public int MaxDexterity { get; set; }
         public int MaxStrength { get; set; }
@@ -27,6 +28,7 @@ namespace Game
         public double CrtDamage { get; set; }
         public int Level { get; set; }
         public int Point { get; set; }
+        public int Expirience { get; set; }
 
         //public double CrtDamage
         //{
@@ -41,11 +43,12 @@ namespace Game
 
         public double Heath { get; set; }
         public double Manna { get; set; }
-        public Character(string name, int strenght, int maxStrenght, int dexterity, int maxDexterity, 
+        public Character(string name, string classname, int strenght, int maxStrenght, int dexterity, int maxDexterity, 
             int intelegence, int maxIntelegence, int vitality, int maxVitality, double health, double manna, 
-            double pdamage, double armor, double mdamage, double mdefence, double crtchanse, double crtmdamage, int point, int level)
+            double pdamage, double armor, double mdamage, double mdefence, double crtchanse, double crtmdamage, int point, int level, int expirience)
         {
             Name = name;
+            ClassName = classname;
             Strenght = strenght;
             MaxStrength = maxStrenght;
             Dexterity = dexterity;
@@ -64,6 +67,7 @@ namespace Game
             CrtDamage = crtmdamage;
             Point = point;
             Level = level;
+            Expirience = expirience;
         }
         public void GetAttributsWarrrior()
         {

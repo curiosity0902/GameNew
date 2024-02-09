@@ -36,21 +36,30 @@ namespace Game.Pages
             int dexterity = Convert.ToInt32(DexterityTb.Text);
             int vitality = Convert.ToInt32(VitalityTb.Text);
 
-            CRUD.CreateCharacterWarrior(new Character(name, strength, 250, dexterity, 80, intelegence, 50, vitality, 100, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1));
-
-            var client = new MongoClient("mongodb://localhost");
-            var database = client.GetDatabase("Characters");
-            var collection = database.GetCollection<Character>("CharacterCollection");
-            var filter = new BsonDocument();
-            var result = collection.Find(filter).ToList();
-
-            var pers = result.FirstOrDefault(x => x.Name == name);
-            App.character = pers;
-
-            if (pers != null)
-                NavigationService.Navigate(new NotBaseStatpointsPage());
+            if (strength > 250 || intelegence > 50 || dexterity > 80 || vitality > 100)
+            {
+                MessageBox.Show("Превышены максимальные значения");
+            }
             else
-                MessageBox.Show("!!!");
+            {
+                CRUD.CreateCharacterWarrior(new Character(name, "Warrior", strength, 250, dexterity, 80, intelegence, 50, vitality, 100, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1, 1000));
+
+                var client = new MongoClient("mongodb://localhost");
+                var database = client.GetDatabase("Characters");
+                var collection = database.GetCollection<Character>("CharacterCollection");
+                var filter = new BsonDocument();
+                var result = collection.Find(filter).ToList();
+
+                var pers = result.FirstOrDefault(x => x.Name == name);
+                App.character = pers;
+
+                if (pers != null)
+                    NavigationService.Navigate(new NotBaseStatpointsPage());
+                else
+                    MessageBox.Show("!!!");
+            }
+
+
         }
 
         private void PlusStrenghbtn_Click(object sender, RoutedEventArgs e)

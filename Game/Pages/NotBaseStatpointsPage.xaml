@@ -52,7 +52,7 @@
                  Grid.Row="0"
                  Grid.Column="2"
                  Grid.ColumnSpan="2"/>
-        
+
         <TextBlock Text="Points:" 
             Grid.Column="4"
             Grid.Row="0"
@@ -83,11 +83,18 @@
      Width="150"
      Height="90"
      FontSize="46"
+     HorizontalAlignment="Left"
+     VerticalAlignment="Center"
+     Grid.Column="5"
+     Grid.ColumnSpan="2" Margin="138,0,0,0"/>
+
+        <TextBlock x:Name="exptxt"
+     Width="150"
+     Height="90"
+     FontSize="46"
      HorizontalAlignment="Center"
      VerticalAlignment="Center"
-     Grid.Row="0"
-     Grid.Column="6"
-     Grid.ColumnSpan="1"/>
+     Grid.Column="6"/>
 
 
         <TextBlock Text="Strength:" 
@@ -364,15 +371,26 @@
              Grid.Column="6"
              Grid.ColumnSpan="1"
              HorizontalAlignment="Left"
-             Width="150"
+             Width="170"
              Height="90"
              FontSize="32"
              FontFamily="Bord"
-             Content="Level"/>
-        
+             Content="Level up"/>
+
         <Button Name="btnCreate" Click="btnCreate_Click" 
                 Grid.Row="6"
                 Grid.Column="5"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Left"
+                Width="350"
+                Height="90"
+                FontSize="32"
+                FontFamily="Bord"
+                Content="Save"/>
+
+        <Button Name="btnBackToMenu" Click="btnBackToMenu_Click" 
+                Grid.Row="6"
+                Grid.Column="3"
                 Grid.ColumnSpan="2"
                 HorizontalAlignment="Left"
                 Width="350"
