@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Game.Pages
 {
@@ -29,8 +30,7 @@ namespace Game.Pages
         public NotBaseStatpointsPage()
         {
             InitializeComponent();
-
-            if(App.character.ClassName == "Warrior")
+            if (App.character.Weapon != null)
             {
                 txtName.Text = App.character.Name;
                 StrengthTb.Text = Convert.ToString((App.character.Strenght).ToString("0.####"));
@@ -41,10 +41,11 @@ namespace Game.Pages
                 PointsTb.Text = Convert.ToString(App.character.Point);
                 LevelTb.Text = Convert.ToString(App.character.Level);
 
-                HealthTB.Text = Convert.ToString(App.character.Vitality * 2 + (App.character.Strenght));
+                HealthTB.Text = Convert.ToString(App.character.Heath);
                 MannaTB.Text = Convert.ToString(App.character.Intelegence);
 
-                PDamageTb.Text = Convert.ToString(App.character.Strenght);
+
+                PDamageTb.Text = Convert.ToString(App.character.PDamage);
 
                 ArmorTb.Text = Convert.ToString(App.character.Dexterity);
                 MDamageTb.Text = Convert.ToString((App.character.Intelegence * 0.2).ToString("0"));
@@ -53,54 +54,83 @@ namespace Game.Pages
                 CRTDamageTb.Text = Convert.ToString(App.character.Dexterity);
                 exptxt.Text = Convert.ToString(App.character.Expirience);
             }
-            else if (App.character.ClassName == "Rogue")
+            else
             {
-                txtName.Text = App.character.Name;
-                StrengthTb.Text = Convert.ToString(App.character.Strenght);
-                DexterityTb.Text = Convert.ToString(App.character.Dexterity);
-                IntelegenceTb.Text = Convert.ToString(App.character.Intelegence);
-                VitalityTb.Text = Convert.ToString(App.character.Vitality);
+                if (App.character.ClassName == "Warrior")
+                {
+                    txtName.Text = App.character.Name;
+                    StrengthTb.Text = Convert.ToString((App.character.Strenght).ToString("0.####"));
+                    DexterityTb.Text = Convert.ToString(App.character.Dexterity);
+                    IntelegenceTb.Text = Convert.ToString(App.character.Intelegence);
+                    VitalityTb.Text = Convert.ToString(App.character.Vitality);
 
-                PointsTb.Text = Convert.ToString(App.character.Point);
-                LevelTb.Text = Convert.ToString(App.character.Level);
+                    PointsTb.Text = Convert.ToString(App.character.Point);
+                    LevelTb.Text = Convert.ToString(App.character.Level);
 
-                HealthTB.Text = Convert.ToString(App.character.Vitality * 1.5 + (App.character.Strenght * 0.5));
-                MannaTB.Text = Convert.ToString(App.character.Intelegence * 1.2);
+                    HealthTB.Text = Convert.ToString(App.character.Vitality * 2 + (App.character.Strenght));
+                    MannaTB.Text = Convert.ToString(App.character.Intelegence);
 
-                PDamageTb.Text = Convert.ToString(App.character.Strenght * 0.5 + App.character.Dexterity * 0.5);
 
-                ArmorTb.Text = Convert.ToString(App.character.Dexterity * 1.5);
-                MDamageTb.Text = Convert.ToString(App.character.Intelegence * 0.2);
-                MDefenceTb.Text = Convert.ToString(App.character.Intelegence * 0.5);
-                CRTChanseTb.Text = Convert.ToString(App.character.Dexterity * 0.2);
-                CRTDamageTb.Text = Convert.ToString(App.character.Dexterity);
-                exptxt.Text = Convert.ToString(App.character.Expirience);
+                    PDamageTb.Text = Convert.ToString(App.character.Strenght);
+
+                    ArmorTb.Text = Convert.ToString(App.character.Dexterity);
+                    MDamageTb.Text = Convert.ToString((App.character.Intelegence * 0.2).ToString("0"));
+                    MDefenceTb.Text = Convert.ToString(App.character.Intelegence * 0.5);
+                    CRTChanseTb.Text = Convert.ToString(App.character.Dexterity * 0.2);
+                    CRTDamageTb.Text = Convert.ToString(App.character.Dexterity);
+                    exptxt.Text = Convert.ToString(App.character.Expirience);
+                }
+                else if (App.character.ClassName == "Rogue")
+                {
+                    txtName.Text = App.character.Name;
+                    StrengthTb.Text = Convert.ToString(App.character.Strenght);
+                    DexterityTb.Text = Convert.ToString(App.character.Dexterity);
+                    IntelegenceTb.Text = Convert.ToString(App.character.Intelegence);
+                    VitalityTb.Text = Convert.ToString(App.character.Vitality);
+
+                    PointsTb.Text = Convert.ToString(App.character.Point);
+                    LevelTb.Text = Convert.ToString(App.character.Level);
+
+                    HealthTB.Text = Convert.ToString(App.character.Vitality * 1.5 + (App.character.Strenght * 0.5));
+                    MannaTB.Text = Convert.ToString(App.character.Intelegence * 1.2);
+
+                    PDamageTb.Text = Convert.ToString(App.character.Strenght * 0.5 + App.character.Dexterity * 0.5);
+
+                    ArmorTb.Text = Convert.ToString(App.character.Dexterity * 1.5);
+                    MDamageTb.Text = Convert.ToString(App.character.Intelegence * 0.2);
+                    MDefenceTb.Text = Convert.ToString(App.character.Intelegence * 0.5);
+                    CRTChanseTb.Text = Convert.ToString(App.character.Dexterity * 0.2);
+                    CRTDamageTb.Text = Convert.ToString(App.character.Dexterity);
+                    exptxt.Text = Convert.ToString(App.character.Expirience);
+
+                }
+                else if (App.character.ClassName == "Wizard")
+                {
+                    txtName.Text = App.character.Name;
+                    StrengthTb.Text = Convert.ToString(App.character.Strenght);
+                    DexterityTb.Text = Convert.ToString(App.character.Dexterity);
+                    IntelegenceTb.Text = Convert.ToString(App.character.Intelegence);
+                    VitalityTb.Text = Convert.ToString(App.character.Vitality);
+
+                    PointsTb.Text = Convert.ToString(App.character.Point);
+                    LevelTb.Text = Convert.ToString(App.character.Level);
+
+                    HealthTB.Text = Convert.ToString(App.character.Vitality * 1.4 + (App.character.Strenght * 0.2));
+                    MannaTB.Text = Convert.ToString(App.character.Intelegence * 1.5);
+
+                    PDamageTb.Text = Convert.ToString(App.character.Strenght * 0.5);
+
+                    ArmorTb.Text = Convert.ToString(App.character.Dexterity);
+                    MDamageTb.Text = Convert.ToString(App.character.Intelegence);
+                    MDefenceTb.Text = Convert.ToString(App.character.Intelegence);
+                    CRTChanseTb.Text = Convert.ToString(App.character.Dexterity * 0.2);
+                    CRTDamageTb.Text = Convert.ToString(App.character.Dexterity);
+                    exptxt.Text = Convert.ToString(App.character.Expirience);
+
+                }
 
             }
-            else if (App.character.ClassName == "Wizard")
-            {
-                txtName.Text = App.character.Name;
-                StrengthTb.Text = Convert.ToString(App.character.Strenght);
-                DexterityTb.Text = Convert.ToString(App.character.Dexterity);
-                IntelegenceTb.Text = Convert.ToString(App.character.Intelegence);
-                VitalityTb.Text = Convert.ToString(App.character.Vitality);
-
-                PointsTb.Text = Convert.ToString(App.character.Point);
-                LevelTb.Text = Convert.ToString(App.character.Level);
-
-                HealthTB.Text = Convert.ToString(App.character.Vitality * 1.4 + (App.character.Strenght * 0.2));
-                MannaTB.Text = Convert.ToString(App.character.Intelegence * 1.5);
-
-                PDamageTb.Text = Convert.ToString(App.character.Strenght * 0.5);
-
-                ArmorTb.Text = Convert.ToString(App.character.Dexterity);
-                MDamageTb.Text = Convert.ToString(App.character.Intelegence);
-                MDefenceTb.Text = Convert.ToString(App.character.Intelegence);
-                CRTChanseTb.Text = Convert.ToString(App.character.Dexterity * 0.2);
-                CRTDamageTb.Text = Convert.ToString(App.character.Dexterity);
-                exptxt.Text = Convert.ToString(App.character.Expirience);
-
-            }
+            
 
         }
 
@@ -166,13 +196,10 @@ namespace Game.Pages
                 collection.UpdateOneAsync(filtersPoint, updatePoint);
                 collection.UpdateOneAsync(filtersLevel, updateLevel);
 
-
                 Refresh();
         
                 MessageBox.Show("ok");
                 //NavigationService.Navigate(new NotBaseStatpointsPage());
-
-
             }
             else
                 MessageBox.Show("!!!");
@@ -498,6 +525,23 @@ namespace Game.Pages
         private void btnBackToMenu_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Characters());
+        }
+
+        private void btnNextPage_Click(object sender, RoutedEventArgs e)
+        {
+            string name  = txtName.Text;
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("Characters");
+            var collection = database.GetCollection<Character>("CharacterCollection");
+            var filter = new BsonDocument();
+            var result = collection.Find(filter).ToList();
+
+            var pers = result.FirstOrDefault(x => x.Name == name);
+            App.character = pers;
+
+            NavigationService.Navigate(new WeaponPage());
+
+           
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using Game.Mongodb;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace Game
     [BsonIgnoreExtraElements]
     public class Character
     {
+
+        public Weapon Weapon { get; set; }
         public string Name { get; set; }
         public string ClassName { get; set; }
         public int MaxVitality { get; set; }
@@ -80,5 +83,6 @@ namespace Game
             Heath = Vitality * 1.4 + 0.2;
             Manna = 1.5 * Intelegence;
         }
+        
     }
 }

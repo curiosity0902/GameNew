@@ -398,5 +398,17 @@
                 FontSize="32"
                 FontFamily="Bord"
                 Content="Back"/>
+
+        <Button Name="btnNextPage" Click="btnNextPage_Click" 
+         Grid.Row="6"
+         Grid.Column="1"
+         Grid.ColumnSpan="2"
+         HorizontalAlignment="Left"
+         Width="350"
+         Height="90"
+         FontSize="32"
+         FontFamily="Bord"
+         Content="Next page"/>
+        
     </Grid>
 </Page>

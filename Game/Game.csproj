@@ -155,8 +155,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\WeaponPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mongodb\Weapon.cs" />
     <Compile Include="Pages\CharacterPage.xaml.cs">
       <DependentUpon>CharacterPage.xaml</DependentUpon>
     </Compile>
@@ -171,6 +176,9 @@
     </Compile>
     <Compile Include="Pages\NotBaseStatpointsPage.xaml.cs">
       <DependentUpon>NotBaseStatpointsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WeaponPage.xaml.cs">
+      <DependentUpon>WeaponPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

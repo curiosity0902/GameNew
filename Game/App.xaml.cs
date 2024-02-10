@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game.Mongodb;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -15,5 +16,7 @@ namespace Game
     {
         public static Character SelectedCh { get; set; }
         public static Character character; //типо выбранный перс
+        public static Weapon Selectesweapon { get; set; }
+        public static Weapon weapon; //Типо выбранное оружие
     }
 }

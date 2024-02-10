@@ -27,7 +27,7 @@ namespace Game.Pages
         {
             InitializeComponent();
         }
-
+        
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             string name = txtName.Text;

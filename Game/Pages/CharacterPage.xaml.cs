@@ -42,7 +42,7 @@ namespace Game.Pages
             }
             else
             {
-                CRUD.CreateCharacterWarrior(new Character(name, "Warrior", strength, 250, dexterity, 80, intelegence, 50, vitality, 100, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1, 1000));
+                
 
                 var client = new MongoClient("mongodb://localhost");
                 var database = client.GetDatabase("Characters");
@@ -56,7 +56,8 @@ namespace Game.Pages
                 if (pers != null)
                     NavigationService.Navigate(new NotBaseStatpointsPage());
                 else
-                    MessageBox.Show("!!!");
+                    CRUD.CreateCharacterWarrior(new Character(name, "Warrior", strength, 250, dexterity, 80, intelegence, 50, vitality, 100, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1, 1000));
+
             }
 
 
